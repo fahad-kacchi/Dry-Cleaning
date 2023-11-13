@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Dhobi Ghat | Request</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<link href="MDB-Free/css/style.css" rel="stylesheet">
+		<style>
+			.size{
+				width:200px;
+			}
+			.bottom{
+				padding-bottom: 25px;
+			}
+			.topnav-right {
+				float: right;
+			}
+			.submit{
+				float: right;
+				position:fixed;
+			}
+		</style>
+	</head>
+	<body onload="displayStoreDetailsToAdmin()">
+		<div class="container" >
+			<div class="jumbotron text-center" style="background-color:white">
+                <div class="card">
+                    <h5 class="card-header" style="background-color: black; color:white">
+						<b> Welcome to Admin </b>
+					</h5>
+                </div>
+                <br>
+                <div class="card">
+                    <h5 class="card-header" style="background-color: black; color:white"><b> Admin Approval </b></h5>
+                    <div class="card-body">
+                        <form name="myForm">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Store No</th>
+                                        <th scope="col">Store Name</th>
+                                        <th scope="col">Address</th>
+                                        <th scope="col">Pincode</th>
+                                        <th scope="col">Approve</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="display-store-details-id">
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+				<br>
+				<button class="btn btn-primary btn-block" onclick="window.location='index.html'">Logout</button>
+			</div>
+		</div>
+		<script>
+			function displayStoreDetailsToAdmin(){
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET","/Dry-Cleaning/jsp-pages/display-store-details-to-admin.jsp",false);
+                xmlhttp.send();
+                output = xmlhttp.responseText;
+                document.getElementById("display-store-details-id").innerHTML = output;
+			}
+		</script>
+		<script type="text/javascript" src="MDB-Free/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/popper.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/mdb.min.js"></script>
+	</body>
+</html>

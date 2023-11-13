@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Dhobi Ghat | Payment</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<link href="MDB-Free/css/style.css" rel="stylesheet">
+		<style>
+			
+		</style>
+	</head>
+	
+	<body onload="printDetailsOfInvoice()">
+		<div class="container">
+			<div class="jumbotron" style="background-color: #e0e0e0;">
+				<div class="text-center">
+					<h4 class="card-header" style="background-color:white"><b> Invoice </b></h4>
+				<div>
+				<br>
+				<div id="print-details">
+				</div>
+			</div>
+		</div>
+		
+		<div id="testId"></div>
+		<script>
+			function getCustomerId(){
+				var customerId = getURL().split("=")[1];
+				return customerId;
+			}
+			function printDetailsOfInvoice(){
+				xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET","/Dry-Cleaning/jsp-pages/print-details-of-invoice.jsp?customerId="+getCustomerId(),false);
+                xmlhttp.send();
+                output = xmlhttp.responseText;
+				//alert(output.trim());
+				document.getElementById("print-details").innerHTML = output;
+			}
+		</script>
+		<script type="text/javascript" src="scripts/custom-js/get-url.js"></script>
+		
+		<script type="text/javascript" src="MDB-Free/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/popper.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/mdb.min.js"></script>
+	</body>
+</html>

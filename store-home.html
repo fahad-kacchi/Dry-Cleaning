@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Dhobi Ghat | Shop Home</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<link href="MDB-Free/css/style.css" rel="stylesheet">
+		<style>
+			.padding{
+				padding-bottom: 25px;
+			}
+			.topnav-right {
+				float: right;
+			}
+		</style>
+	</head>
+	<body onload="getShopName()">
+		<div class="container" >
+			<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+				<a class="navbar-brand" href="#"></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="basicExampleNav">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link active" onclick="goToStoreHomePage(getStoreId())">Home&nbsp&nbsp</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" onclick="goToViewNewOrdersPage(getStoreId())">View New Orders&nbsp&nbsp</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" onclick="goToViewCompletedOrdersPage(getStoreId())">View Completed orders&nbsp&nbsp</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" onclick="goToEditRatesPage(getStoreId())">Edit Rates&nbsp&nbsp</a>
+						</li>
+					</ul>
+					<span class="navbar-text white-text">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item">
+								<a class="nav-link" href="index.html">Logout</a>
+							</li>
+						</ul>
+					</span>
+				</div>
+			</nav>
+			<div class="jumbotron" style="background-color:#F0FFFF">
+				<h1>
+					<b>
+						<center>Welcome to <span id="shop-name-id"><span>
+					</b>
+				</h1>
+				<br>
+				<h2><b><center>Dashboard</b></h2> 
+				<br>
+				<p>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					For more than 5 decades Deluxe has been a well known and respectable brand in Pune city. We offer a full range of laundry & dry-cleaning services through our 17 distribution outlets and state of art processing unit. Our vast experience and efficient service has made Deluxe the leading laundry service provider in Pune.
+					Deluxe also offers heavy duty dust extraction systems, marketing KIEKENS (Holland) range of industrial dust extractors and de-dusting systems. We also offer Professional Cleaning Supplies along with an extensive range of Housekeeping, Industrial & Commercial Laundry Chemicals.
+				</p>
+				<br>
+				<button type="button" class="btn btn-primary btn-lg btn-block">View New Orders Now</button>
+				
+			</div>
+		</div>
+		
+		<script>
+			function getStoreId(){
+				var storeId = getURL().split("=")[1];
+				return storeId;
+			}
+
+			function getShopName(){
+				xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET","/Dry-Cleaning/jsp-pages/get-shop-name.jsp?storeId="+getStoreId(),false);
+                xmlhttp.send();
+                output = xmlhttp.responseText;
+				document.getElementById("shop-name-id").innerHTML = output;
+			}
+		</script>
+		<script type="text/javascript" src="scripts/custom-js/get-url.js"></script>
+		<script type="text/javascript" src="scripts/custom-js/jump-page-scripts.js"></script>
+		
+		<script type="text/javascript" src="MDB-Free/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/popper.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/mdb.min.js"></script>
+	</body>
+</html>

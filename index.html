@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Dhobi Ghat</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="MDB-Free/font/font-awesome.min.css">
+		<!-- Bootstrap core CSS -->
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Material Design Bootstrap -->
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<!-- Your custom styles (optional) -->
+		<link href="MDB-Free/css/style.css" rel="stylesheet">		
+        <style>
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="jumbotron text-center ">
+                <div class="card-body">
+                    <img src="images/background/images.png"  class="card-img-top" alt="photo"><br><br>
+                    <img src="images/background/dhobi-ghat-mumbai-india.jpg" class="card-img-top" alt="photo">
+                </div>
+                <br><br>
+                <button type="button" class="btn btn-lg btn-primary" onclick="goToCustomerLoginPage()">Customer Login</button>
+                <button type="button" class="btn btn-lg btn-default" onclick="goToCustomerRegisterPage()">Customer Register</button>
+                <button type="button" class="btn btn-lg btn-primary" onclick="goToStoreLoginPage()">Store Login</button>
+                <button type="button" class="btn btn-lg btn-default" onclick="goToStoreRegisterPage()">Store Register</button>
+				<button type="button" class="btn btn-lg btn-primary" onclick="goToAdminLoginPage()">Admin Login</button>
+            </div>	
+        </div>
+        
+        <!-- Custom Scripts-->
+        <script>
+            function goToCustomerLoginPage(){
+                window.location = "customer-login-page.html";
+            }
+            function goToCustomerRegisterPage(){
+                window.location = "customer-register-page.html";
+            }
+            function goToStoreLoginPage(){
+                window.location = "store-login-page.html";
+            }
+            function goToStoreRegisterPage(){
+                window.location = "store-register-page.html";
+            }
+			function goToAdminLoginPage(){
+                window.location = "admin-login-page.html";
+            }
+        </script>
+        <script type="MDB-Free/text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script type="MDB-Free/text/javascript" src="js/popper.min.js"></script>
+        <script type="MDB-Free/text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="MDB-Free/text/javascript" src="js/mdb.min.js"></script>
+    </body>
+</html>

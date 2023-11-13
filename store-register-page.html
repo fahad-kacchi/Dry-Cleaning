@@ -1,0 +1,100 @@
+<!--
+    Code Art Solutions
+    Project Name: Photo-Competition
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Dhobi Ghat | Add Store</title>
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="MDB-Free/font/font-awesome.min.css">
+		<!-- Bootstrap core CSS -->
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Material Design Bootstrap -->
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<!-- Your custom styles (optional) -->
+		<link href="MDB-Free/css/style.css" rel="stylesheet">		
+		<style type="text/css">
+            .jumbotron{
+                //background: url(images/backgrounds/sign-up-2.jpg);
+                //background-color: default-color;
+                background: #90caf9;
+                background-size: 100% 100%;
+                opacity:1;
+            }
+            .bottom{
+                padding-bottom: 25px;
+            }
+            .cardStyle{
+                //opacity:0.8;
+            }
+			.custom {border-radius: 30px;}
+            .cardColor{
+                background: #9933CC;
+                color: white;
+            }
+            .buttonColor{
+                background: #e0f2f1;
+            }
+		</style>
+    </head>
+    <body>
+        <br>
+        <div class="container">
+            <div class="jumbotron">
+                <div class="card cardColor">
+                    <div class="card-body">
+                        <center> <b class="fontStyle"> Add Store </b> </center>
+                    </div>
+                </div>         
+                <br>
+                <font color="white">
+                    <form name="addStoreForm" class="text-center border border-light p-5" action="jsp-pages/store-dry-clean-store-login-details.jsp">
+                        <div class="row">
+							<div class="col-md-6 bottom">
+								<input type="text" id="store_name" name="store_name" class="form-control" placeholder="Store Name" onchange="nameValidation()" required>
+							</div>
+							<div class="col-md-6">
+								<input type="email" id="emailid" class="form-control mb-4" placeholder="E-mail" name="emailid" onchange="emailValidation()" required>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 bottom">
+								<input type="password" id="password" class="form-control" placeholder="Password" name="password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>                        
+							</div>
+							<div class="col-md-6">
+								<input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" name="confirmPassword" onchange="passwordValidation()" required>
+							</div>
+						</div>
+						<div class="form-group">
+						
+							<textarea class="form-control rounded-0" id="store_address"  name="store_address" rows="2" placeholder="Store Address"></textarea>
+						</div>
+						<div class="row">
+							<div class="col-md-6 bottom">
+								<input type="Number" id="mobile" class="form-control" placeholder="Phone No" maxlength="10" name="mobile" onchange="mobileValidation()" required>
+							</div>
+							<div class="col-md-6">
+								<input type="Number" id="pincode" class="form-control" placeholder="Pincode" maxlength="6" name="pincode" onchange="pincodeValidation()" required>
+							</div>
+						</div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-purple my-4 btn-block custom" type="submit">Add Store Request</button>
+                            </div>                                                
+                            <div class="col-md-6">                                
+                                <button class="btn btn-purple my-4 btn-block custom"  type="reset">Clear</button>
+                            </div>
+                        </div>
+                    </form>
+                </font>
+            </div>
+        </div>
+		
+		<!-- Custom Scripts -->
+		<script src="scripts/custom-js/sign-up-validations.js"> </script>
+    </body>
+</html>

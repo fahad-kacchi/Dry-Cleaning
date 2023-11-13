@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Dhobi Ghat | Home</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<link href="MDB-Free/css/style.css" rel="stylesheet">
+		<style>
+		</style>
+	</head>
+
+	<body>
+		<div class="container" style="background-color:#d5f4e6" >
+			<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="basicExampleNav">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item">
+							<a class="nav-link" onclick="goToIndexPage()">Home&nbsp&nbsp</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" onclick="goToStoreList()">Stores Near Me&nbsp&nbsp</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="remaining-payment.html">Payment&nbsp&nbsp</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="view-orders.html">View Orders&nbsp&nbsp</a>
+						</li>
+					</ul>
+					<span class="navbar-text white-text">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item">
+								<a class="nav-link" href="index.html">Logout</a>
+							</li>
+						</ul>
+					</span>
+				</div>
+			</nav>
+			<br><br>
+			<center><h1><b>Welcome to Dhobi Ghat</b></h1></center>
+			<br>	
+			<div class="row">	
+				<div class="col-md-2">
+				</div>
+				<div class="col-md-8">
+					<ul>
+						<h4><li>Laundry service includes washing, ironing, and dry cleaning of clothes</li></h4>
+						<h4><li>Background verified and experienced professionals in budget, at your service</li></h4>
+						<h4><li>Fast and easy way to pay bills online</li></h4>
+						<h4><li>Free and fast home delivery service </li></h4>
+					</ul>  
+					<br>
+					<a onclick="goToStoreList()" class="btn primary-color btn-lg btn-block" style="color: white;">Service at your doorstep just one click away</a>
+				</div>
+				<div class="col-md-2">
+				</div>
+			</div>
+			<br><br>
+		</div>
+		
+		<script>
+			function getCustomerId(){
+				var customerId = getURL().split("=")[1];
+				return customerId;
+			}
+			
+			function goToStoreList(){
+				window.location = "store-list.html?customerId="+getCustomerId();
+			}
+			
+			function goToIndexPage(){
+				window.location = "index.html?customerId="+getCustomerId();
+			}
+		</script>
+		<script type="text/javascript" src="scripts/custom-js/get-url.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/popper.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/mdb.min.js"></script>
+	</body>
+</html>

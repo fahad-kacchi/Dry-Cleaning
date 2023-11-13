@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Dhobi Ghat | Verification Admin</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<link href="MDB-Free/css/style.css" rel="stylesheet">
+		<style>
+			.size{
+				width:200px;
+			}
+			.bottom{
+				padding-bottom: 25px;
+			}
+			.mycolor{
+				font-color:red;
+			}
+		</style>
+	</head>
+	<body onload="setStoreAndCustomerId(), viewOrderAdmin(getStoreId(), getCustomerId())">
+		<div class="container" >
+			<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="basicExampleNav">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" onclick="goToStoreHomePage(getStoreId())">Home&nbsp&nbsp</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" onclick="goToViewNewOrdersPage(getStoreId())">View New Orders&nbsp&nbsp</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" onclick="goToViewCompletedOrdersPage(getStoreId())">View Completed orders&nbsp&nbsp</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" onclick="goToEditRatesPage(getStoreId())">Edit Rates&nbsp&nbsp</a>
+						</li>
+					</ul>
+					<span class="navbar-text white-text">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item">
+								<a class="nav-link" href="index.html">Logout</a>
+							</li>
+						</ul>
+					</span>
+				</div>
+			</nav>
+			<div class="jumbotron text-center" style="background-color:#F0FFFF">
+				<form name="myForm" action="jsp-pages/submit-pickup-request.jsp" class="text-center border border-light p-5">
+					<input type="hidden" value="" id="storeID" name="storeID">
+					<input type="hidden" value="" id="customerID" name="customerID">
+					<p class="h4 mb-4"><h3><b>Pick Up Request</b></h3></p><br>
+					<div class="form-row mb-4">
+						<div class="col">
+							<input type="text" id="fullName" name="fullName" class="form-control" placeholder="Full Name" onchange="fullNameValidation()" disabled required>
+						</div>
+					</div>
+					<textarea type="text" id="address" name="address" class="form-control mb-4" placeholder="Address" onchange="addressValidation()" disabled required></textarea>
+					<div class="row">
+						<div class="col-md-4 padding">
+							<input type="text" id="pincode" name="pincode" pattern="\d*" class="form-control" placeholder="Pincode"  min="6" maxlength="6" onchange="CheckIndianZipCode(myForm.pincode.value)" disabled required>
+							<br>
+						</div>
+					</div>	
+					<br>
+					<div class="table-responsive">
+						<table class="table">
+						  <thead class="black white-text">
+							<tr>
+							  <th scope="col">Cloth Type</th>
+							  <th scope="col">Washing Quantity</th>
+							  <th scope="col">Ironing Quantity</th>
+							  <th scope="col">Verified Washing Quantity</th>
+							  <th scope="col">Verified Ironing Quantity</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <th scope="row">Saree</th>
+							  <td><input type="number" id="sareeWashingQty" name="sareeWashingQty" class="form-control" placeholder="Quantity" disabled required></td>
+							  <td><input type="number" id="sareeIroningQty" name="sareeIroningQty" class="form-control" placeholder="Quantity" disabled required></td>
+							  <td><input type="number" id="verifiedSareeWashingQty" name="verifiedSareeWashingQty" value="0" class="form-control" placeholder="Verified Quantity" required></td>
+							  <td><input type="number" id="verifiedSareeIroningQty" name="verifiedSareeIroningQty" value="0" class="form-control" placeholder="Verified Quantity" required></td>
+							</tr>
+							<tr>
+							   <th scope="row">Suit</th>
+							  <td><input type="number" id="suitWashingQty" name="suitWashingQty" class="form-control" placeholder="Quantity" disabled required></td>
+							  <td><input type="number" id="suitIroningQty" name="suitIroningQty" class="form-control" placeholder="Quantity" disabled required></td>
+							  <td><input type="number" id="verifiedSuitWashingQty" name="verifiedSuitWashingQty" value="0" class="form-control" placeholder="Verified Quantity" required></td>
+							  <td><input type="number" id="verifiedSuitIroningQty" name="verifiedSuitIroningQty" value="0" class="form-control" placeholder="Verified Quantity" required></td>
+							</tr>
+							<tr>
+							   <th scope="row">Jeans</th>
+							  <td><input type="number" id="jeansWashingQty" name="jeansWashingQty" class="form-control" placeholder="Quantity" disabled required></td>
+							  <td><input type="number" id="jeansIroningQty" name="jeansIroningQty" class="form-control" placeholder="Quantity" disabled required></td>
+							  <td><input type="number" id="verifiedJeansWashingQty" name="verifiedJeansWashingQty" value="0" class="form-control" placeholder="Verified Quantity" required></td>
+							  <td><input type="number" id="verifiedJeansIroningQty" name="verifiedJeansIroningQty" value="0" class="form-control" placeholder="Verified Quantity" required></td>
+							</tr>
+							<tr>
+							   <th scope="row">Top</th>
+							  <td><input type="number" id="topWashingQty" name="topWashingQty" class="form-control" placeholder="Quantity" disabled required></td>
+							  <td><input type="number" id="topIroningQty" name="topIroningQty" class="form-control" placeholder="Quantity" disabled required></td>
+							  <td><input type="number" id="verifiedTopWashingQty" name="verifiedTopWashingQty" value="0" class="form-control" placeholder="Verified Quantity" required></td>
+							  <td><input type="number" id="verifiedTopIroningQty" name="verifiedTopIroningQty" value="0" class="form-control" placeholder="Verified Quantity" required></td>
+							</tr>
+						  </tbody>
+						</table>
+					</div>
+					<button type="submit" class="btn btn-primary btn-lg">Submit Pickup Request</button>
+				</form>
+			</div>
+		</div>
+		
+		<script>
+			function getStoreId(){
+				var storeId = getURL().split("=")[1].split("&customerId")[0];
+				return storeId;
+			}
+			function getCustomerId(){
+				var customerId = getURL().split("=")[0];
+				return customerId;
+			}
+			function goToStoreHomePage(storeId){
+				window.location = "store-home.html?storeId="+getStoreId();
+			}
+
+			function goToViewNewOrdersPage(storeId){
+				window.location = "view-new-requests.html?storeId="+getStoreId();
+			}
+
+			function goToViewCompletedOrdersPage(storeId){
+				window.location = "completed-requests.html?storeId="+getStoreId();
+			}
+
+			function goToEditRatesPage(storeId){
+				window.location = "edit-rates.html?storeId="+getStoreId();
+			}
+			
+			function setStoreAndCustomerId(){
+				var splitURL = getURL().split("&");
+				var storeId = splitURL[0].split("=")[1];
+				var customerId = splitURL[1].split("=")[1];
+				document.getElementById("customerID").value = customerId;
+				document.getElementById("storeID").value = storeId;
+			}
+		</script>
+		<script type="text/javascript" src="scripts/custom-js/get-url.js"></script>
+		<script type="text/javascript" src="scripts/custom-js/view-order-admin.js"></script>
+		
+		<script type="text/javascript" src="MDB-Free/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/popper.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/mdb.min.js"></script>
+		<script type="text/javascript" src="scripts/custom-js/pickup-request.js"></script>
+	</body>
+</html>

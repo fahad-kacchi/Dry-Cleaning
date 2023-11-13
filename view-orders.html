@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Dhobi Ghat | Request</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<link href="MDB-Free/css/style.css" rel="stylesheet">
+		<style>
+			
+		</style>
+	</head>
+	<body onload="viewPickupRequests()">
+		<div class="container" >
+			<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="basicExampleNav">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item">
+							<a class="nav-link" onclick="goToCustomerHomePage(getCustomerId())">Home&nbsp;&nbsp;</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" onclick="goToStoresNearMePage(getCustomerId())">Stores Near Me&nbsp;&nbsp;</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" onclick="goToPaymentPage(getCustomerId())">Payment&nbsp;&nbsp;</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" onclick="goToViewOrdersPage(getCustomerId())">View Orders&nbsp;&nbsp;</a>
+						</li>
+					</ul>
+					<span class="navbar-text white-text">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item">
+								<a class="nav-link" href="index.html">Logout</a>
+							</li>
+						</ul>
+					</span>
+				</div>
+			</nav>
+			<div class="jumbotron">	
+				<div class='table-responsive'>
+					<table id="tablePreview" class="table table-hover table-bordered" cellspacing="1" cellpadding="2" width="100%">
+						<thead>
+							<tr class="table-info">
+							  <th>Order No</th>
+							  <th>Full Name</th>
+							  <th>Shop Name</th>
+							  <th>Order Date</th>
+							  <th>Amount</th>
+							</tr>
+						</thead>
+						<tbody id="view-orders-id">
+							<!-- <tr>
+								<th scope="row">1</th>
+								<td>Cell</td>
+								<td>Cell</td>
+								<td>Cell</td>
+								<td>Cell</td>
+								<td>Cell</td>
+							</tr>
+							<tr>
+								<th scope="row">2</th>
+								<td>Cell</td>
+								<td>Cell</td>
+								<td>Cell</td>
+								<td>Cell</td>
+								<td>Cell</td>
+							</tr> -->
+						</tbody>
+					</table>
+				</div>
+			</div>	
+		</div>
+		<script>
+			function getCustomerId(){
+				var customerId = getURL().split("=")[1];
+				return customerId;
+			}
+			function viewPickupRequests(){
+				xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET","/Dry-Cleaning/jsp-pages/view-orders.jsp?customerId="+getCustomerId(),false);
+                xmlhttp.send();
+                output = xmlhttp.responseText;
+				document.getElementById("view-orders-id").innerHTML = output;
+			}
+			
+		</script>
+
+		<script type="text/javascript" src="scripts/custom-js/get-url.js"></script>
+		<script type="text/javascript" src="scripts/custom-js/customer-jump-page-scripts.js"></script>
+		
+		<script type="text/javascript" src="MDB-Free/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/popper.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/mdb.min.js"></script>
+	</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Dhobi Ghat | Request</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<link href="MDB-Free/css/style.css" rel="stylesheet">
+		<style>
+			.size{
+				width:200px;
+			}
+			.bottom{
+				padding-bottom: 25px;
+			}
+			.topnav-right {
+				float: right;
+			}
+			.submit{
+				float: right;
+				position:fixed;
+			}
+		</style>
+	</head>
+	<body onload="setStoreIdToHiddenDiv(), setRates()">
+		<div class="container" >
+			<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+				<a class="navbar-brand" href="#"></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="basicExampleNav">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" onclick="goToStoreHomePage(getStoreId())">Home&nbsp&nbsp</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" onclick="goToViewNewOrdersPage(getStoreId())">View New Orders&nbsp&nbsp</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" onclick="goToViewCompletedOrdersPage(getStoreId())">View Completed orders&nbsp&nbsp</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" onclick="goToEditRatesPage(getStoreId())">Edit Rates&nbsp&nbsp</a>
+						</li>
+					</ul>
+					<span class="navbar-text white-text">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item">
+								<a class="nav-link" href="index.html">Logout</a>
+							</li>
+						</ul>
+					</span>
+				</div>
+			</nav>
+			<div class="jumbotron text-center" style="background-color:#F0FFFF">
+				
+				<div class="card">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-6">
+								<button type="submit" onclick="goToAddRatesPage()" class="btn btn-block btn-primary">Add New</button>
+							</div>
+							<div class="col-md-6">
+								<button type="button" onclick="showEditDiv()" class="btn btn-block btn-primary">Edit</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div id="editDiv" style="display:none;">
+					<form name="myForm" action="jsp-pages/edit-rates.jsp">
+						<div class="card">
+							<div class="card-header primary-color white-text"> 
+								<h4><b>Edit Rates<b></h4>
+							</div>
+							<small><font color="red">** Note : Please fill all the text fields. If u dont provide such feature then put 0. **</font></small>
+							<div class="card-body">
+								<div class="row">	
+									<div class="col-md-6">
+										<input type="hidden" name="storeId" id="store-id" value=""></input>
+										<div class="row">	
+											<div class="col-md-12">
+												<div class="md-form">
+													<input type="number" id="sareeWashing" name="sareeWashing" value="0" class="form-control">
+													<label for="suitWashing">Saree Rate: Washing</label>
+												</div>								
+												<div class="md-form">
+													<input type="number" id="sareeIroning" name="sareeIroning" value="0" class="form-control">
+													<label for="suitWashing">Saree Rate: Ironing</label>
+												</div>								
+											</div>
+											<div class="col-md-12">
+												<div class="md-form">
+													<input type="number" id="suitWashing" name="suitWashing" value="0" class="form-control">
+													<label for="suitWashing">Suit Rate: Washing</label>
+												</div>								
+												<div class="md-form">
+													<input type="number" id="suitIroning" name="suitIroning" value="0" class="form-control">
+													<label for="suitWashing">Suit Rate: Ironing</label>
+												</div>								
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="row">	
+											<div class="col-md-12">
+												<div class="md-form">
+													<input type="number" id="jeansWashing" name="jeansWashing" value="0" class="form-control">
+													<label for="suitWashing">Jeans Rate: Washing</label>
+												</div>								
+												<div class="md-form">
+													<input type="number" id="jeansIroning" name="jeansIroning" value="0" class="form-control">
+													<label for="suitWashing">Jeans Rate: Ironing</label>
+												</div>								
+											</div>
+											<div class="col-md-12">
+												<div class="md-form">
+													<input type="number" id="topWashing" name="topWashing" value="0" class="form-control">
+													<label for="suitWashing">Top Rate: Washing</label>
+												</div>								
+												<div class="md-form">
+													<input type="number" id="topIroning" name="topIroning" value="0" class="form-control">
+													<label for="suitWashing">Top Rate: Ironing</label>
+												</div>								
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<button type="submit" class="btn btn-primary btn-block">Update</button><br><br>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>			
+		</div>
+		
+		<script>
+			function getStoreId(){
+				var storeId = getURL().split("=")[1];
+				return storeId;
+			}
+
+			function showEditDiv(){
+				document.getElementById("editDiv").style.display = "block";
+			}
+			
+		
+			function setStoreIdToHiddenDiv(){
+				document.getElementById("store-id").value = getStoreId();
+			}
+			
+			function goToAddRatesPage(){
+				window.location = "add-rates.html?storeId="+getStoreId();
+			}
+			
+			function setRates(){
+				xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET","/Dry-Cleaning/jsp-pages/fetch-rates-by-store-id.jsp?storeId="+getStoreId(),false);
+                xmlhttp.send();
+                output = xmlhttp.responseText;
+				if(output.trim() == "NULL"){
+					document.getElementById("sareeWashing").value = "0";
+					document.getElementById("sareeIroning").value = "0";
+					document.getElementById("suitWashing").value = "0";
+					document.getElementById("suitIroning").value = "0";
+					document.getElementById("jeansWashing").value = "0";
+					document.getElementById("jeansIroning").value = "0";
+					document.getElementById("topWashing").value = "0";
+					document.getElementById("topIroning").value = "0";
+				} else {
+					var rateArray = output.trim().split("$");
+					document.getElementById("sareeWashing").value = rateArray[0];
+					document.getElementById("sareeIroning").value = rateArray[1];
+					document.getElementById("suitWashing").value  = rateArray[2];
+					document.getElementById("suitIroning").value  = rateArray[3];
+					document.getElementById("jeansWashing").value = rateArray[4];
+					document.getElementById("jeansIroning").value = rateArray[5];
+					document.getElementById("topWashing").value   = rateArray[6];
+					document.getElementById("topIroning").value   = rateArray[7];
+				}
+			}
+		</script>
+		<script type="text/javascript" src="scripts/custom-js/get-url.js"></script>
+		<script type="text/javascript" src="scripts/custom-js/jump-page-scripts.js"></script>
+		
+		<script type="text/javascript" src="MDB-Free/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/popper.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/mdb.min.js"></script>
+	</body>
+</html>

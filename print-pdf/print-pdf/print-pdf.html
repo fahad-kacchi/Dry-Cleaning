@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script>
+            function printPDF(divId) {
+				window.frames["print_frame"].document.body.innerHTML = document
+						.getElementById(divId).innerHTML;
+				window.frames["print_frame"].window.focus();
+				window.frames["print_frame"].window.print();
+			}
+        </script>
+    </head>
+    <body>
+        <div id="mydiv">
+                <table border="1">
+                    <tr>
+                        <td><font size="4" color="red">First Name</td>
+                        <td>Last Name</td>
+                    </tr>
+                    <tr>
+                        <td>Anant</td>
+                        <td>Kshisagar</td>
+                    </tr>
+                </table>
+            </font>
+        </div>
+		<iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe> 
+        <input type="button" value="print" onclick="printPDF('mydiv')"></input>
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<!--
+    Code Art Solutions
+    Project Name: Dhobi Ghat
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Dhobi Ghat | Admin Login</title>
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="MDB-Free/font/font-awesome.min.css">
+		<!-- Bootstrap core CSS -->
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Material Design Bootstrap -->
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<!-- Your custom styles (optional) -->
+		<link href="MDB-Free/css/style.css" rel="stylesheet">		
+
+        <style>
+            .jumbotron{
+                background: url(images/background/login-background.jpg);
+                background-size: 100% 100%;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="container">
+            <br>
+            <div class="jumbotron">
+                <br><br><br><br>
+                
+                <font color="white">
+                    <h2 align="center">Store Login</h2>
+                    <form action="jsp-pages/dry-clean-store-login-verification.jsp">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="text" class="form-control" id="email-id" placeholder="Enter email id" name="email-id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
+                        </div>
+                        <button type="submit" class="btn ripple-effect btn-success">
+                            <b>Login</b>
+                        </button> 
+                        <button type="reset" class="btn ripple-effect btn-success">
+                            <b>Clear</b>
+                        </button> 
+                        <br><br>
+						<a href="index.html" class="btn btn-default mb-4" > Home </a>
+                    </form>
+                </font>
+            </div>
+        </div>
+		<!-- MDB - SCRIPTS -->
+		<script type="text/javascript" src="MDB-Free/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/popper.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/mdb.min.js"></script>
+		
+		<!-- Custom Scripts -->
+		<script src="scripts/validation-scripts/register-validation.js"></script>
+    </body>
+<html>

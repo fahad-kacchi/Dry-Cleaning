@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Dhobi Ghat | Request</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<link href="MDB-Free/css/style.css" rel="stylesheet">
+		<style>
+			.size{
+				width:200px;
+			}
+			.bottom{
+				padding-bottom: 25px;
+			}
+			.mycolor{
+				font-color:red;
+			}
+		</style>
+	</head>
+	<body onload="setStoreAndCustomerId(), displayRatesToCustomer()">
+		<div class="container" >
+			<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="basicExampleNav">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="customer-homepage.html">Home&nbsp&nbsp</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="store-list.html">Stores Near Me&nbsp&nbsp</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="remaining-payment.html">Payment&nbsp&nbsp</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="view-orders.html">View Orders&nbsp&nbsp</a>
+						</li>
+					</ul>
+					<span class="navbar-text white-text">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item">
+								<a class="nav-link" href="index.html">Logout</a>
+							</li>
+						</ul>
+					</span>
+				</div>
+			</nav>
+			<div class="jumbotron text-center" style="background-color:#F0FFFF">
+				<div class="card">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-12">
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th colspan="8"><b>Store Rates</b></th>
+										</tr>
+										<tr>
+											<th colspan="4"><b>Washing</b></th>
+											<th colspan="4"><b>Ironing</b></th>
+										</tr>
+										<tr>
+											<th scope="col"><b> Saree </b></th>
+											<th scope="col"><b> Suit  </b></th>
+											<th scope="col"><b> Jeans </b></th>
+											<th scope="col"><b> Top   </b></th>
+											<th scope="col"><b> Saree </b></th>
+											<th scope="col"><b> Suit  </b></th>
+											<th scope="col"><b> Jeans </b></th>
+											<th scope="col"><b> Top   </b></th>
+										</tr>
+									</thead>
+									<tbody id="display-rates-to-customer">
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<form name="myForm" action="jsp-pages/store-pickup-request.jsp" class="text-center border border-light p-5">
+					<input type="hidden" value="" name="storeID" id="store-id">
+					<input type="hidden" value="" name="customerID" id="customer-id">
+					<p class="h4 mb-4"><h3><b>Pick Up Request</b></h3></p><br>
+					<div class="form-row mb-4">
+						<div class="col">
+							<input type="text" id="fullName" name="fullName" class="form-control" placeholder="Full Name" onchange="fullNameValidation()" required>
+						</div>
+					</div>
+					<textarea type="text" id="address" name="address" class="form-control mb-4" placeholder="Address" onchange="addressValidation()" required></textarea>
+					<div class="row">
+						<div class="col-md-4 padding">
+							<input type="text" id="pincode" name="pincode" pattern="\d*" class="form-control" placeholder="Pincode"  min="6" maxlength="6" onchange="CheckIndianZipCode(myForm.pincode.value)" required>
+							<br>
+						</div>
+						<div class="col-md-4 padding bottom">
+							<div class="btn-group">
+								<select class="btn primary-color dropdown-toggle" id="pickupTime" name="pickupTime" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="document.getElementById('first-option').disabled = true" required>
+									<div class="dropdown-menu">
+										<option class="dropdown-item white" id="first-option" >Pickup Time</option>
+										<option class="dropdown-item white" required>7-AM</option>
+										<option class="dropdown-item white" required>8-AM</option>
+										<option class="dropdown-item white" required>9-AM</option>
+										<option class="dropdown-item white" required>10-AM</option>
+										<option class="dropdown-item white" required>11-AM</option>
+										<option class="dropdown-item white" required>12-PM</option>
+										<option class="dropdown-item white" required>1-PM</option>
+										<option class="dropdown-item white" required>2-PM</option>
+										<option class="dropdown-item white" required>3-PM</option>
+										<option class="dropdown-item white" required>4-PM</option>
+										<option class="dropdown-item white" required>5-PM</option>
+										<option class="dropdown-item white" required>6-PM</option>
+										<option class="dropdown-item white" required>7-PM</option>
+										<option class="dropdown-item white" required>8-PM</option>
+									</div>
+								</select>
+							</div>
+						</div><br>
+						<div class="col-md-4 padding">
+							<label><h5>Date : </h5></label>
+ 							<input type="date" name="date" value="date" id="date" required>
+						</div>
+					</div>	
+					<br>
+					<div class="table-responsive">
+						<table class="table">
+						  <thead class="black white-text">
+							<tr>
+							  <th scope="col">Cloth Type</th>
+							  <th scope="col">Washing Quantity</th>
+							  <th scope="col">Ironing Quantity</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <th scope="row">Saree</th>
+							  <td><input type="number" id="sareeWashingQty" value="0" name="sareeWashingQty" class="form-control" placeholder="Quantity" required></td>
+							  <td><input type="number" id="sareeIroningQty" value="0" name="sareeIroningQty" class="form-control" placeholder="Quantity" required></td>
+							</tr>                                            
+							<tr>                                             
+							   <th scope="row">Suit</th>                     
+							  <td><input type="number" id="suitWashingQty"  value="0" name="suitWashingQty" class="form-control" placeholder="Quantity" required></td>
+							  <td><input type="number" id="suitIroningQty"  value="0" name="suitIroningQty" class="form-control" placeholder="Quantity" required></td>
+							</tr>                                            
+							<tr>                                             
+							   <th scope="row">Jeans</th>                    
+							  <td><input type="number" id="jeansWashingQty" value="0" name="jeansWashingQty" class="form-control" placeholder="Quantity" required></td>
+							  <td><input type="number" id="jeansIroningQty" value="0" name="jeansIroningQty" class="form-control" placeholder="Quantity" required></td>
+							</tr>                                            
+							<tr>                                             
+							   <th scope="row">Top</th>                      
+							  <td><input type="number" id="topWashingQty"   value="0" name="topWashingQty" class="form-control" placeholder="Quantity" required></td>
+							  <td><input type="number" id="topIroningQty"   value="0" name="topIroningQty" class="form-control" placeholder="Quantity" required></td>
+							</tr>
+						  </tbody>
+						</table>
+					</div>
+					<button type="submit" class="btn btn-primary btn-lg" >Submit Pickup Request</button>
+				</form>
+			</div>
+		</div>
+		<script>
+			function getStoreId(){
+				var storeId = getURL().split("=")[2];
+				return storeId;
+			}
+			function getCustomerId(){
+				var customerId = getURL().split("=")[1].split("&storeId")[0];
+				return customerId;
+			}
+			function setStoreAndCustomerId(){
+				document.getElementById("customer-id").value = getCustomerId();
+				document.getElementById("store-id").value = getStoreId();
+			}
+			
+			function displayRatesToCustomer(){
+				xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET","/Dry-Cleaning/jsp-pages/display-rates-to-customer.jsp?storeId="+getStoreId(),false);
+                xmlhttp.send();
+                output = xmlhttp.responseText;
+				document.getElementById("display-rates-to-customer").innerHTML = output;
+			}
+		</script>
+		<script type="text/javascript" src="scripts/custom-js/get-url.js"></script>
+		
+		<script type="text/javascript" src="MDB-Free/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/popper.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/mdb.min.js"></script>
+		<script type="text/javascript" src="scripts/custom-js/pickup-request.js"></script>
+	</body>
+</html>

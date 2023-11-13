@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bootstrap/w3.css/w3.css">
+        <script src="jquery/jquery-3.3.1.js"> </script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="bootstrap/fonts/glyphicons-halflings-regular.ttf"></script>
+        <title>Sign-Up</title>
+		<style>
+			
+		</style>
+		
+        <script src="scripts/register-validation.js"> </script>
+        <script src="scripts/custom-js/sign-up-validations.js"> </script>
+        <script src="scripts/sign-up-validations.js"> </script>
+        
+	</head>
+	<body>
+	    <div class="container">
+            <div class="jumbotron w3-light-blue">
+				<div class="row">
+					<div class="w3-card-4">
+						<div class="w3-container w3-brown">
+							<h2>Registration</h2>
+						</div>
+						<div class="container w3-white">
+							<form class="w3-container" action="registration-page.php">
+							<p>      
+								<label class="w3-text-brown"><b>Full Name</b></label>
+								<input class="w3-input w3-border w3-sand form-control" name="name" id="name" onchange="fullNameValidation()" required>
+							</p>
+							<p>      
+								<label class="w3-text-brown"><b>E-mail</b></label>
+								<input class="w3-input w3-border w3-sand form-control" name="emailid" id="emailid" onchange="emailValidation()" required>
+							</p>
+							<p>      
+								<label class="w3-text-brown"><b>Mobile</b></label>
+								<input class="w3-input w3-border w3-sand form-control" name="mobile" id="mobile" onchange="mobileValidation()" maxlength="10" required>									
+							</p>
+							<p>      
+								<label class="w3-text-brown"><b>Password</b></label>
+								<input class="w3-input w3-border w3-sand form-control" type="password" name="password" id="password" onchange="" maxlength="10" required>
+							</p>
+							<p>      
+								<label class="w3-text-brown"><b>Confirm Password</b></label>
+								<input class="w3-input w3-border w3-sand form-control" type="password" name="confirmPassword" id="confirmPassword" onchange="passwordValidation()" maxlength="10" required>
+							</p>
+							<p>
+								<button type="button"class="w3-btn w3-brown">Register</button>
+								<button type="button" class="w3-btn w3-brown" onclick="clearInputs()">Clear</button>
+							</p>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>	
+</html>
